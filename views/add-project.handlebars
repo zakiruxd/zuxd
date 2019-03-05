@@ -1,0 +1,29 @@
+<h1>Add New Project</h1>
+<a href="/portfolio">Back</a>
+
+<form method="POST" action="/portfolio/add" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Title</label>
+        <input name="title" type="text" required>
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input name="description" type="text" required>
+    </div>
+    <div class="form-group">
+        <label>Live Link</label>
+        <input name="livelink" type="text">
+    </div>
+    <div class="form-group">
+        <label>Design Link</label>
+        <input name="designlink" type="text">
+    </div>
+    <div class="form-group">
+        <label for="file">Image Upload</label>
+        <input name="file" type="file" id="file" required>
+    </div>
+    <br>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+</form>

@@ -1,0 +1,37 @@
+$primary-color: rgb(40, 40, 43);
+$secondary-color: rgb(255, 255, 255);
+
+body {
+  font-family: Raleway;
+}
+
+// Gridd CSS Wrapper
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-gap: 1em;
+  //   grid-auto-rows: minmax(200px, auto);
+}
+
+.project {
+  border: 1px solid black;
+  //   text-align: center;
+
+  h3 {
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  .image-container img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .item-button {
+    background-color: $primary-color;
+
+    a {
+      color: $secondary-color;
+    }
+  }
+}

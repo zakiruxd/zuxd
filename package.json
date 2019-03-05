@@ -1,0 +1,25 @@
+{
+  "name": "zuxd",
+  "version": "1.0.0",
+  "description": "This is the web application for ZUXD business.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "sass": "node-sass -w scss/ -o public/css/ --recursive"
+  },
+  "author": "Zakir Faizal",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "gridfs-stream": "^1.1.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.4.16",
+    "multer": "^1.4.1",
+    "multer-gridfs-storage": "^3.2.3",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.10"
+  }
+}

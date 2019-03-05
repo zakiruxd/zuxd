@@ -1,0 +1,29 @@
+<div>
+    <h1>Portfolio</h1>
+    <a href="/portfolio/add">Add Project</a>
+</div>
+
+<div class="wrapper">
+    {{#each projects}}
+    <div class="project">
+        <div class="image-container">
+            <img src="portfolio/image/{{this.image}}" alt="">
+        </div>
+        <div class="project-title">
+            <h3>{{this.title}}</h3>
+        </div>
+        <div class="project-description">
+            <p>{{this.description}}</p>
+        </div>
+        <div class="item-button">
+            <a class="live-link-button" href="http://{{this.livelink}}">See Live</a>
+        </div>
+        <div class="item-button">
+            <a class="design-link-button" href="{{this.designlink}}">View Design</a>
+        </div>
+        <form action="/portfolio/{{this.id}}?_method=DELETE" method="POST">
+            <button class="delete-btn">Delete Project</button>
+        </form>
+    </div>
+    {{/each}}
+</div>

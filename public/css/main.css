@@ -1,0 +1,20 @@
+body {
+  font-family: Raleway; }
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-gap: 1em; }
+
+.project {
+  border: 1px solid black; }
+  .project h3 {
+    display: inline-block;
+    margin: 0 auto; }
+  .project .image-container img {
+    width: 100%;
+    object-fit: cover; }
+  .project .item-button {
+    background-color: #28282b; }
+    .project .item-button a {
+      color: white; }
