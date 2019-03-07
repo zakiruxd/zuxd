@@ -1,0 +1,41 @@
+<div class="section">
+    <h3>Edit Project</h3>
+</div>
+
+<div>
+    {{!-- <form method="POST" action="/portfolio/edit/{{projects._id}}?_method=PUT" enctype="multipart/form-data"> --}}
+    <form method="POST" action="/portfolio/edit/{{projects._id}}" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Title</label>
+            <input name="project[title]" type="text" value="{{projects.title}}" required>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input name="project[description]" type="text" value="{{projects.description}}" required>
+        </div>
+        <div class="form-group">
+            <label>Live Link</label>
+            <input name="project[livelink]" type="text" value="{{projects.livelink}}">
+        </div>
+        <div class="form-group">
+            <label>Design Link</label>
+            <input name="project[designlink]" type="text" value="{{projects.designlink}}">
+        </div>
+        <div class="form-group">
+            <img src="/portfolio/image/{{projects.image}}" alt="{{projects.image}}">
+        </div>
+
+        {{!-- <div><input type="checkbox" onchange="this.form.disabled.edit-button=!this.checked"><label>New Image</label>
+        </div>
+
+        <div style="visibility:hidden" id="edit-button" class="form-group">
+            <label for="file">Change Image</label>
+            <input name="file" type="file" id="file" required>
+        </div> --}}
+        <br>
+        <div>
+            <input type="submit" value="Update">
+        </div>
+    </form>
+    <a href="/portfolio">Cancel</a>
+</div>

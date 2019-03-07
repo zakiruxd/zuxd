@@ -16,6 +16,7 @@ let Project = require("../models/project");
 
 //Middlware
 router.use(methodOverride("_method"));
+router.use(bodyParser.urlencoded({ extended: false }));
 
 //Initialize GridFS
 let gfs;
@@ -93,25 +94,11 @@ router.get("/image/:filename", (req, res) => {
   });
 });
 
-//Delete Single Image Route
-//NOte that the documentation will not mention you need the root: uploads statement
-router.delete("/image/:filename", (req, res) => {
-  gfs.remove(
-    { filename: req.params.filename, root: "uploads" },
-    (err, gridStore) => {
-      if (err) {
-        return res.status(404).json({ err: err });
-      } else {
-        res.redirect("/portfolio");
-      }
-    }
-  );
-});
-
 //Add New Project GET Route
 router.get("/add", (req, res) => {
   res.render("add-project");
 });
+
 //Add New Project PUT Route
 router.post("/add", upload.any(), (req, res) => {
   let project = new Project({
@@ -126,8 +113,58 @@ router.post("/add", upload.any(), (req, res) => {
   });
 });
 
-//Delete Project Route
+//Get the Edit Project Route
+router.get("/edit/:id", upload.any(), (req, res) => {
+  Project.findById(req.params.id, (err, projects) => {
+    if (err) {
+      return res.status(404).json({ err: "There is an error" });
+    } else {
+      res.render("edit-project", {
+        projects: projects
+      });
+    }
+  });
+});
 
+//Add New Project PUT Route (This is a working code for updating only text)
+// router.put("/edit/:id", upload.any(), (req, res) => {
+//   Project.findByIdAndUpdate(
+//     req.params.id,
+//     req.body.project,
+//     (err, updatedProject) => {
+//       if (err) {
+//         res.redirect("/edit/" + req.params.id);
+//       } else {
+//         res.redirect("/portfolio");
+//       }
+//     }
+//   );
+// });
+
+//Add New Project PUT Route (This is a code for updating both text and image)
+router.post("/edit/:id", upload.any(), (req, res) => {
+  let newProjectData = {};
+  newProjectData.title = req.body.project.title;
+  newProjectData.description = req.body.project.description;
+  newProjectData.livelink = req.body.project.livelink;
+  newProjectData.designlink = req.body.project.designlink;
+  // newProjectData.image = req.files[0].filename;
+  // newProjectData.image = req.body.image;
+
+  console.log(newProjectData);
+
+  let query = { _id: req.params.id };
+
+  Project.update(query, newProjectData, (err, updatedProject) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/portfolio");
+    }
+  });
+});
+
+// Delete Project Route
 // EXPLANATION FOR ROUTE BELOW
 // The first step is to find the relevant project and so the outter most Mongoose query does that with findById. Then within the query we asychronously delete both the project
 // in the projects database and the chunks and files in the two images databases. To run the two nested queries simultaneously, we use the async.series feature by requiring the async variable

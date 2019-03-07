@@ -1,37 +1,51 @@
 $primary-color: rgb(40, 40, 43);
 $secondary-color: rgb(255, 255, 255);
 
-body {
-  font-family: Raleway;
+html {
+  font-family: Raleway, GillSans, sans-serif;
+}
+.section {
+  overflow: hidden;
+  display: block;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1920px;
+  width: 75%;
 }
 
-// Gridd CSS Wrapper
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  grid-gap: 1em;
-  //   grid-auto-rows: minmax(200px, auto);
-}
-
-.project {
-  border: 1px solid black;
-  //   text-align: center;
-
-  h3 {
-    display: inline-block;
-    margin: 0 auto;
+nav {
+  .brand-logo img {
+    height: 64px;
+    padding: 0px;
+    width: auto;
   }
+}
 
-  .image-container img {
+.card-content {
+  a {
+    border: 1px solid black;
+    width: 40%;
+    margin: 10px;
+  }
+}
+
+.card-image {
+  height: 250px;
+  overflow: hidden;
+}
+
+.card-action {
+  overflow: hidden;
+  a {
+    font-weight: 400;
     width: 100%;
-    object-fit: cover;
+
+    // margin: 5px;
+    // display: block;
   }
-
-  .item-button {
-    background-color: $primary-color;
-
-    a {
-      color: $secondary-color;
-    }
+  button {
+    width: 100%;
+    margin: 5px 0;
   }
 }
